@@ -2,10 +2,12 @@
 
 Evaluating the Impact of Prompt Injection Attacks on Retrieval-Augmented Generation (RAG) Systems
 
-##Overview
+## Overview
+
 This repository contains the architectural blueprint and source code for simulating a Prompt Injection attack against a Retrieval-Augmented Generation (RAG) system. The project demonstrates how Large Language Models (LLMs) can be manipulated when instructed to process adversarial text embedded within retrieved documents.
 
-##Architecture
+## Architecture
+
 The system is designed around AWS Managed Services:
 * **Inference Engine:** Amazon Bedrock (Meta Llama 3 8B)
 * **Embedding Model:** Amazon Titan Text Embeddings
