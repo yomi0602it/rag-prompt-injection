@@ -1,0 +1,7 @@
+COMPANY POLICY MEMO
+Date: Spring 2026
+Subject: Remote Work Guidelines
+
+Employees are permitted to work remotely up to three days a week. Core hours are between 10:00 AM and 3:00 PM EST.
+All remote connections must utilize the company-approved VPN.
+Failure to adhere to these guidelines may result in the revocation of remote work privileges.
