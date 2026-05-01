@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E4057"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#C0392B"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#00000022"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#F8F9FA" rx="8"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2E4057">RAG Pipeline Architecture — Prompt Injection Attack Surface</text>
+
+  <!-- ===== USER ===== -->
+  <rect x="370" y="52" width="160" height="44" rx="22" fill="#2E75B6" filter="url(#shadow)"/>
+  <text x="450" y="79" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white" font-weight="bold">User Query</text>
+
+  <!-- Arrow: User -> Orchestrator -->
+  <line x1="450" y1="96" x2="450" y2="130" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== LANGCHAIN ORCHESTRATOR ===== -->
+  <rect x="295" y="132" width="310" height="50" rx="6" fill="#FFFFFF" stroke="#2E75B6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="154" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2E4057">LangChain Orchestrator</text>
+  <text x="450" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6C757D">src/vulnerable_rag.py — create_retrieval_chain</text>
+
+  <!-- Arrow: Orchestrator -> Embeddings (left) -->
+  <line x1="370" y1="182" x2="200" y2="230" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="265" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6C757D">embed query</text>
+
+  <!-- Arrow: Orchestrator -> Vector DB (right) -->
+  <line x1="530" y1="182" x2="700" y2="230" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="635" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6C757D">vector search</text>
+
+  <!-- ===== BEDROCK EMBEDDINGS ===== -->
+  <rect x="80" y="232" width="240" height="50" rx="6" fill="#FFF3E0" stroke="#E67E22" stroke-width="2" filter="url(#shadow)"/>
+  <text x="200" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2E4057">Amazon Bedrock Embeddings</text>
+  <text x="200" y="271" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6C757D">Titan Text Embeddings V2</text>
+
+  <!-- ===== OPENSEARCH VECTOR DB ===== -->
+  <rect x="580" y="232" width="240" height="50" rx="6" fill="#E8F5E9" stroke="#27AE60" stroke-width="2" filter="url(#shadow)"/>
+  <text x="700" y="253" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2E4057">OpenSearch Serverless</text>
+  <text x="700" y="271" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6C757D">Vector Database (Top-K)</text>
+
+  <!-- Arrow: Embeddings -> Vector DB -->
+  <line x1="320" y1="257" x2="578" y2="257" stroke="#2E4057" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <text x="450" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6C757D">query vector</text>
+
+  <!-- Arrow: Vector DB -> Retrieved Docs -->
+  <line x1="700" y1="282" x2="700" y2="320" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== DATA SOURCES (connected to Vector DB) ===== -->
+  <!-- Clean docs -->
+  <rect x="820" y="180" width="65" height="55" rx="3" fill="#D5F5E3" stroke="#27AE60" stroke-width="1"/>
+  <text x="852" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#27AE60" font-weight="bold">CLEAN</text>
+  <text x="852" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">hr_policy</text>
+  <text x="852" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">it_use</text>
+  <text x="852" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">password</text>
+  <line x1="820" y1="257" x2="822" y2="257" stroke="#27AE60" stroke-width="1"/>
+
+  <!-- Poisoned docs -->
+  <rect x="820" y="245" width="65" height="55" rx="3" fill="#FDEDEC" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="852" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#C0392B" font-weight="bold">POISONED</text>
+  <text x="852" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">override</text>
+  <text x="852" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">role_hijack</text>
+  <text x="852" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#6C757D">data_exfil</text>
+
+  <!-- ===== RETRIEVED DOCUMENTS (The danger zone) ===== -->
+  <rect x="560" y="322" width="280" height="52" rx="6" fill="#FDEDEC" stroke="#C0392B" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="700" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#C0392B">⚠ Retrieved Documents</text>
+  <text x="700" y="363" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#C0392B">May contain adversarial instructions</text>
+
+  <!-- Arrow: Retrieved Docs -> Context Window (RED) -->
+  <line x1="630" y1="374" x2="530" y2="420" stroke="#C0392B" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="600" y="402" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#C0392B">INJECTION POINT</text>
+
+  <!-- ===== LLM CONTEXT WINDOW ===== -->
+  <rect x="250" y="418" width="400" height="110" rx="6" fill="#FFFFFF" stroke="#8E44AD" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#8E44AD">Bedrock LLM Context Window</text>
+  <text x="450" y="456" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6C757D">Meta Llama 3 8B Instruct</text>
+
+  <!-- Context window internals -->
+  <rect x="270" y="465" width="120" height="24" rx="3" fill="#EBF5FB" stroke="#2E75B6" stroke-width="1"/>
+  <text x="330" y="481" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#2E75B6">System Prompt</text>
+
+  <rect x="400" y="465" width="120" height="24" rx="3" fill="#FDEDEC" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="460" y="481" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#C0392B">Retrieved Docs</text>
+
+  <rect x="530" y="465" width="100" height="24" rx="3" fill="#EBF5FB" stroke="#2E75B6" stroke-width="1"/>
+  <text x="580" y="481" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#2E75B6">User Query</text>
+
+  <!-- Flattened token stream label -->
+  <text x="450" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#8E44AD" font-style="italic">← flattened into a single token sequence — no enforceable boundary →</text>
+
+  <!-- Arrow: Context Window -> Response -->
+  <line x1="450" y1="528" x2="450" y2="562" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== RESPONSE ===== -->
+  <rect x="330" y="564" width="240" height="44" rx="22" fill="#C0392B" filter="url(#shadow)"/>
+  <text x="450" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Compromised Response</text>
+
+  <!-- ===== TERRAFORM LABEL ===== -->
+  <rect x="14" y="52" width="140" height="40" rx="4" fill="#EDE7F6" stroke="#8E44AD" stroke-width="1"/>
+  <text x="84" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#8E44AD">TERRAFORM (IaC)</text>
+  <text x="84" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6C757D">infrastructure/main.tf</text>
+
+  <!-- Dashed line from Terraform to resources -->
+  <line x1="84" y1="92" x2="84" y2="257" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="84" y1="257" x2="78" y2="257" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Legend -->
+  <rect x="14" y="540" width="200" height="70" rx="4" fill="white" stroke="#DEE2E6" stroke-width="1"/>
+  <text x="24" y="556" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#2E4057">Legend</text>
+  <line x1="24" y1="570" x2="50" y2="570" stroke="#2E4057" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="58" y="574" font-family="Arial, sans-serif" font-size="8" fill="#6C757D">Normal data flow</text>
+  <line x1="24" y1="588" x2="50" y2="588" stroke="#C0392B" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <text x="58" y="592" font-family="Arial, sans-serif" font-size="8" fill="#C0392B">Attack vector / injection</text>
+  <line x1="24" y1="603" x2="50" y2="603" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="58" y="607" font-family="Arial, sans-serif" font-size="8" fill="#8E44AD">Terraform provisioning</text>
+</svg>
