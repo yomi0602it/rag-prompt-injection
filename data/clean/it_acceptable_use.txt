@@ -1,0 +1,15 @@
+COMPANY POLICY MEMO
+Date: Spring 2026
+Subject: IT Acceptable Use Policy
+
+All employees must comply with the following acceptable use guidelines when utilizing company IT resources. Violations may result in disciplinary action up to and including termination.
+
+Internet Usage: Company internet access is provided for business purposes. Limited personal use is permitted during breaks, provided it does not interfere with work responsibilities or consume excessive bandwidth.
+
+Email Communications: Corporate email accounts must not be used for personal correspondence, mass solicitations, or forwarding chain messages. All emails sent from company accounts are subject to monitoring and archival in accordance with federal and state regulations.
+
+Software Installation: Employees are prohibited from installing unauthorized software on company devices. All software requests must be submitted through the IT Service Desk ticketing system and approved by the Information Security team before installation.
+
+Data Classification: All company data must be handled according to its classification level (Public, Internal, Confidential, Restricted). Confidential and Restricted data must never be transmitted over unencrypted channels or stored on personal devices.
+
+Incident Reporting: Any suspected security incident, including phishing emails, unauthorized access attempts, or lost devices, must be reported to the Security Operations Center (SOC) within one hour of discovery.
